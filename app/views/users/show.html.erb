@@ -6,14 +6,20 @@
   <thead>
     <th>Beer</th>
     <th>Brewery</th>
+    <th>Review</th>
   </thead>
 
-  <% @user.beers.each do |b| %>
+  <!-- Creates a table row with a link to both the beer and brewery show pages
+  for each beer a user has reviewed -->
+  <% @user.reviews.each do |r| %>
     <td>
-      <%= link_to b.name, b %>
+      <%= link_to r.beer.name, r.beer %>
     </td>
     <td>
-      <%= link_to b.brewery.name, b.brewery %>
+      <%= link_to r.brewery.name, r.brewery %>
+    </td>
+    <td>
+      <%= link_to r.rating, r %>
     </td>
   <% end %>
 </table>
