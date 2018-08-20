@@ -25,3 +25,9 @@
     </tr>
   <% end %>
 </table>
+
+<br>
+
+<%= form_tag user_path(@user), method: :delete do %>
+  <%= submit_tag 'Delete User' %>
+<% end %>
