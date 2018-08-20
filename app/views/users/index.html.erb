@@ -1,0 +1,10 @@
+<h1>Users</h1>
+
+<!-- Lists users names as links to the show page -->
+<ul>
+  <% @users.each do |u| %>
+    <li>
+      <%= link_to u.name, u %>
+    </li>
+  <% end %>
+</ul>

@@ -1,4 +1,8 @@
 class Review < ApplicationRecord
   belongs_to :user
   belongs_to :beer
+
+  def brewery
+    beer.brewery
+  end
 end

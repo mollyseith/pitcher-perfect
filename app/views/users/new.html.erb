@@ -1,0 +1,26 @@
+<h1>Add New User</h1>
+
+<% if @user.errors.any? %>
+  <ul>
+    <% @user.errors.full_messages.each do |m| %>
+      <li><%= m %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for @user do |u| %>
+  <%= u.label :name %>
+  <%= u.text_field :name %>
+
+  <br><br>
+
+  <%= u.label :birthdate %>
+  <%= u.date_select(:birthdate, :order => [:month, :day, :year],
+    start_year: 1900,
+    end_year: Date.today.year
+  ) %>
+
+  <br><br>
+
+  <%= u.submit %>
+<% end %>

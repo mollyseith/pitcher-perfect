@@ -1,0 +1,25 @@
+<h1><%= @user.name %></h1>
+
+<h3>Age: <%= @user.current_age %></h3>
+
+<table>
+  <thead>
+    <th>Beer</th>
+    <th>Brewery</th>
+    <th>Review</th>
+  </thead>
+
+  <!-- Creates a table row for each of the user's reviews with links to the
+  show pages for the beer, brewery, and review. -->
+  <% @user.reviews.each do |r| %>
+    <td>
+      <%= link_to r.beer.name, r.beer %>
+    </td>
+    <td>
+      <%= link_to r.brewery.name, r.brewery %>
+    </td>
+    <td>
+      <%= link_to r.rating, r %>
+    </td>
+  <% end %>
+</table>
