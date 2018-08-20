@@ -9,8 +9,8 @@
     <th>Review</th>
   </thead>
 
-  <!-- Creates a table row with a link to both the beer and brewery show pages
-  for each beer a user has reviewed -->
+  <!-- Creates a table row for each of the user's reviews with links to the
+  show pages for the beer, brewery, and review. -->
   <% @user.reviews.each do |r| %>
     <td>
       <%= link_to r.beer.name, r.beer %>
