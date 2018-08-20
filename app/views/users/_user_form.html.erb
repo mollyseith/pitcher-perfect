@@ -1,0 +1,16 @@
+<%= form_for @user do |u| %>
+  <%= u.label :name %>
+  <%= u.text_field :name %>
+
+  <br><br>
+
+  <%= u.label :birthdate %>
+  <%= u.date_select(:birthdate, :order => [:month, :day, :year],
+    start_year: 1900,
+    end_year: Date.today.year
+  ) %>
+
+  <br><br>
+
+  <%= u.submit %>
+<% end %>
