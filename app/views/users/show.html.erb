@@ -1,0 +1,19 @@
+<h1><%= @user.name %></h1>
+
+<h3>Age: <%= @user.current_age %></h3>
+
+<table>
+  <thead>
+    <th>Beer</th>
+    <th>Brewery</th>
+  </thead>
+
+  <% @user.beers.each do |b| %>
+    <td>
+      <%= link_to b.name, b %>
+    </td>
+    <td>
+      <%= link_to b.brewery.name, b.brewery %>
+    </td>
+  <% end %>
+</table>
