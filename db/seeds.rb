@@ -1,25 +1,37 @@
-User.create(name: 'Steve', birthdate: '1990-01-01')
-
-
-Review.create(user_id: 1, beer_id: 1, content: 'This beer sucks', rating: 1)
-
-
+require 'faker'
 require 'csv'
+
+20.times do
+  User.create(name: Faker::FunnyName.name,
+    birthdate: Faker::Date.birthday(21, 100)
+  )
+end
+
+20 .times do
+  User.create(name: Faker::FunnyName.two_word_name,
+    birthdate: Faker::Date.birthday(21, 100)
+  )
+end
 
 CSV.foreach("breweries.utf8.csv", headers: true) {|row| Brewery.create(name: "#{row[1]}")}
 CSV.foreach("beer.utf8.csv", headers: true) {|row| Beer.create(name: "#{row[2]}", brewery_id: "#{row[1]}")}
-# parsed_csv = File.open('beer.csv').readlines.map{|line| line.split(',')}
-# parsed_csv.shift
-#
-# parsed_csv.each do |line|
-#
-#
-#
-#     home_team = Team.find_or_create_by(name: remove_numbers_from(line[2]))
-#     away_team = Team.find_or_create_by(name: remove_numbers_from(line[5]))
-#     home_team_score = line[3].split('-')[0].to_i
-#     away_team_score = line[3].split('-')[1].to_i
-#     # binding.pry
-#     Match.create(home_team_id: home_team.id, away_team_id: away_team.id,
-#         home_team_score: home_team_score, away_team_score: away_team_score)
-# end
+
+reviews = [
+  'This beer sucks!',
+  'This beer is phenomenal!',
+  'This is horrendous',
+  'This beer cured my asthma!',
+  'It belongs in the garbage',
+  'My dog smelled my beer and ran away from home',
+  'This is the greatest thing I have ever tasted!',
+  'I hate how much I love this beer',
+  'Too many hops',
+  'Not enough hops',
+  'This beer tastes like oranges',
+  'Way too expensive',
+  'I need a keg of this stuff in my home!'
+]
+
+200.times do
+  Review.create(user: User.all.sample, beer: Beer.all.sample, content: reviews.sample, rating: 1 + rand(5))
+end
