@@ -12,6 +12,7 @@
   <!-- Creates a table row for each of the user's reviews with links to the
   show pages for the beer, brewery, and review. -->
   <% @user.reviews.each do |r| %>
+    <tr>
     <td>
       <%= link_to r.beer.name, r.beer %>
     </td>
@@ -21,5 +22,6 @@
     <td>
       <%= link_to r.rating, r %>
     </td>
+  </tr>
   <% end %>
 </table>
