@@ -3,12 +3,6 @@ class BeersController < ApplicationController
 
   def index
     @beers = Beer.all
-    require 'csv'
-
-    # CSV.open('beer.csv', 'r', ';') do |row|
-    #   puts row
-
-    CSV.foreach("beer.utf8.csv", headers: true) {|row| puts "#{row[2]} " }
   end
 
   def show
