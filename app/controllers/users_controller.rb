@@ -15,6 +15,12 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
+
+    if @user.errors.any?
+      render :new
+    else
+      redirect_to @user
+    end
   end
 
   private
