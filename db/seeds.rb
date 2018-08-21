@@ -1,15 +1,24 @@
 require 'faker'
 require 'csv'
+require 'random-word'
 
 20.times do
+  password = RandomWord.adjs.next
+
   User.create(name: Faker::FunnyName.name,
-    birthdate: Faker::Date.birthday(21, 100)
+    birthdate: Faker::Date.birthday(21, 100),
+    password: password,
+    password_confirmation: password
   )
 end
 
 20 .times do
+  password = RandomWord.adjs.next
+
   User.create(name: Faker::FunnyName.two_word_name,
-    birthdate: Faker::Date.birthday(21, 100)
+    birthdate: Faker::Date.birthday(21, 100),
+    password: password,
+    password_confirmation: password
   )
 end
 
