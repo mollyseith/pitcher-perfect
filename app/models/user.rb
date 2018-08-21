@@ -6,6 +6,8 @@ class User < ApplicationRecord
   validates_presence_of :name, :birthdate
   validate :able_to_drink?
 
+  has_secure_password
+
   # Uses current day to return a user's age as an integer
   def current_age
     age = Date.today.year - birthdate.year
