@@ -1,1 +1,20 @@
 <h1>New Review</h1>
+
+<%= render partial: "shared/errors", locals: {new_object: @review} %>
+
+<%= form_for @review do |r| %>
+<%= r.label :beer %>
+<%= r.text_field :beer %>
+<br>
+<br>
+<%= r.label :rating %>
+<%= r.select :rating, (0..5).step(0.5) %>
+<br>
+<br>
+<%= r.label :content %>
+<%= r.text_area :content, size: "30x4" %>
+<br>
+<br>
+<%= r.submit %>
+
+<% end %>
