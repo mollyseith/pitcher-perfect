@@ -5,6 +5,7 @@ ruby '2.3.3'
 gem 'jquery-ui-rails'
 gem 'utf8-cleaner'
 gem 'faker'
+gem 'random-word', '~> 2.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
