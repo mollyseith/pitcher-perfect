@@ -11,6 +11,12 @@
 
   <body>
     <div class="header">
+      <% if !(current_user.id.nil?) %>
+        <button type="button"><%= link_to current_user.name, current_user %>
+        <button type="button"><%= link_to 'Logout', logout_path %>
+      <% else %>
+        <button type="button"><%= link_to 'Login', login_path %>
+      <% end %>
       <button type="button"><%= link_to "Beers", beers_path %></button>
       <button type="button"><%= link_to "Breweries", breweries_path %></button>
       <button type="button"><%= link_to "Write a Review", new_review_url %></button>

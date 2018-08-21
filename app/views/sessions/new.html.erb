@@ -1,5 +1,7 @@
 <h1>Login</h1>
 
+<%= render partial: "shared/errors", locals: {new_object: current_user} %>
+
 <%= form_tag login_path do %>
   Name: <%= text_field_tag :'user[name]' %>
 
