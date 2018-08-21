@@ -1,14 +1,38 @@
-User.create(name: 'Steve', birthdate: '1990-01-01')
-User.create(name: 'Molly', birthdate: '1993-05-09')
-User.create(name: 'John', birthdate: '1954-12-19')
-User.create(name: 'Ann', birthdate: '1997-03-01')
-
+require 'faker'
 require 'csv'
+
+20.times do
+  User.create(name: Faker::FunnyName.name,
+    birthdate: Faker::Date.birthday(21, 100)
+  )
+end
+
+20 .times do
+  User.create(name: Faker::FunnyName.two_word_name,
+    birthdate: Faker::Date.birthday(21, 100)
+  )
+end
+
 CSV.foreach("breweries.utf8.csv", headers: true) {|row| Brewery.create(name: "#{row[1]}")}
 CSV.foreach("beer.utf8.csv", headers: true) {|row| Beer.create(name: "#{row[2]}", brewery_id: "#{row[1]}")}
 
-Review.create(user_id: 1, beer_id: 1, content: 'This beer sucks', rating: 1.5)
-Review.create(user_id: 3, beer_id: 22, content: 'This beer good', rating: 2.5)
-Review.create(user_id: 2, beer_id: 98, content: 'This beer bad', rating: 2.0)
-Review.create(user_id: 4, beer_id: 42, content: 'This beer ok', rating: 4.5)
-Review.create(user_id: 4, beer_id: 540, content: 'This beer really bad', rating: 3.0)
+reviews = [
+  'This beer sucks!',
+  'This beer is phenomenal!',
+  'This is horrendous',
+  'This beer cured my asthma!',
+  'It belongs in the garbage',
+  'My dog smelled my beer and ran away from home',
+  'This is the greatest thing I have ever tasted!',
+  'I hate how much I love this beer',
+  'Too many hops',
+  'Not enough hops',
+  'This beer tastes like oranges',
+  'Way too expensive',
+  'I need a keg of this stuff in my home!'
+]
+
+200.times do
+  Review.create(user: User.all.sample, beer: Beer.all.sample, content: reviews.sample, rating: 1 + rand(5))
+end
+
