@@ -10,6 +10,15 @@
   </head>
 
   <body>
+    <div class="header">
+      <button type="button"><%= link_to "Beers", beers_path %></button>
+      <button type="button"><%= link_to "Breweries", breweries_path %></button>
+      <button type="button"><%= link_to "Write a Review", new_review_url %></button>
+    </div>
+
+  </body>
+
+  <body>
     <%= yield %>
   </body>
 </html>

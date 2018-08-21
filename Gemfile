@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.3.3'
+gem 'jquery-ui-rails'
 gem 'utf8-cleaner'
 gem 'faker'
 

@@ -5,4 +5,5 @@ class Review < ApplicationRecord
   def brewery
     beer.brewery
   end
+
 end

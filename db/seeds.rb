@@ -35,3 +35,4 @@ reviews = [
 200.times do
   Review.create(user: User.all.sample, beer: Beer.all.sample, content: reviews.sample, rating: 1 + rand(5))
 end
+
