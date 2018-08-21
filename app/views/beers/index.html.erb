@@ -1,12 +1,5 @@
 <h1>Beers</h1>
-
-<!-- Search field to allow users to limit beers in index based on beer names -->
-<%= form_tag('/beers', method: "get") do %>
-  <%= label_tag(:beer_name, "Search for:") %>
-  <%= text_field_tag(:beer_name) %>
-  <%= submit_tag("Search") %>
-<% end %>
-
+<!-- <%= params.inspect %> -->
 <ul>
   <% @beers.each do |b| %>
     <li>
@@ -16,3 +9,5 @@
     <br>
   <% end %>
 </ul>
+
+<%= render partial: 'shared/search', locals: {objects: "beers", object_name: "beer_name"} %>

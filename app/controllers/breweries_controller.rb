@@ -3,6 +3,11 @@ class BreweriesController < ApplicationController
 
   def index
     @breweries = Brewery.all
+    if params.include?(:object_name)
+      @breweries = Brewery.where('name LIKE ?', "%#{params[:object_name]}%")
+    else
+      @breweries = Brewery.all
+    end
   end
 
   def show
