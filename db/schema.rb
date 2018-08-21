@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2018_08_17_194820) do
     t.integer "user_id"
     t.integer "beer_id"
     t.text "content"
-    t.integer "rating"
+    t.float "rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["beer_id"], name: "index_reviews_on_beer_id"

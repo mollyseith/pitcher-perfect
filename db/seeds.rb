@@ -33,6 +33,5 @@ reviews = [
 ]
 
 200.times do
-  Review.create(user: User.all.sample, beer: Beer.all.sample, content: reviews.sample, rating: 1 + rand(5))
+  Review.create(user: User.all.sample, beer: Beer.all.sample, content: reviews.sample, rating: 0.step(5, 0.5).to_a.sample)
 end
-
