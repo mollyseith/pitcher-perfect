@@ -13,6 +13,7 @@ class BeersController < ApplicationController
   end
 
   def show
+    @avg = @beer.average_rating
   end
 
   private

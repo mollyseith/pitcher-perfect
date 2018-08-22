@@ -1,3 +1,5 @@
 <h1><%= @beer.name %></h1>
 
-<%= link_to @beer.brewery.name, @beer.brewery %>
+Brewery: <%= link_to @beer.brewery.name, @beer.brewery %><br>
+Style: <%= @beer.style.name %><br>
+Average Rating: <%= @avg %>

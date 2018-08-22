@@ -1,6 +1,7 @@
 require 'faker'
 require 'csv'
 require 'random-word'
+require 'pry'
 
 20.times do
   password = RandomWord.adjs.next
@@ -22,38 +23,10 @@ end
   )
 end
 
-styles = [
-  'Pale Ale'
-  'Pilsner'
-  'Lager'
-  'Bitter'
-  'Stout'
-  'Ale'
-  'Wheat'
-  'Porter'
-  'Cream Ale'
-  'Flavored'
-]
-
-styles.each do |x|
-  Style.create(name: x)
-end
-
 CSV.foreach("breweries.utf8.csv", headers: true) {|row| Brewery.create(name: "#{row[1]}")}
-CSV.foreach("beer.utf8.csv", headers: true) {|row| Beer.create(name: "#{row[2]}", brewery_id: "#{row[1]}", style_id: case = "#{row[4]}"
-when 1..2 || 6..7 || 9..10 || 26..41 || 75..76
-  1
-when 59..71 || 77..78 || 110
-  2
-when 79..82 || 94-105 || 107..109 || 111..114
-  3
-when 3..5 || 90..93
-  4
-when 16 || 20..21 || 23..24 || 42..44
-  5
-else
-  6
-end)}
+CSV.foreach("styles.utf8.csv", headers: true) {|row| Style.create(name: "#{row[2]}")}
+CSV.foreach("beer.utf8.csv", headers: true) {|row| Beer.create(name: "#{row[2]}", brewery_id: "#{row[1]}", style_id: "#{row[4]}")}
+
 
 reviews = [
   'This beer sucks!',
