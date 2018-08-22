@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_22_141524) do
+ActiveRecord::Schema.define(version: 2018_08_22_173508) do
 
   create_table "beers", force: :cascade do |t|
     t.string "name"
@@ -51,6 +51,19 @@ ActiveRecord::Schema.define(version: 2018_08_22_141524) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
+  end
+
+  create_table "venue_beers", force: :cascade do |t|
+    t.integer "venue_id"
+    t.integer "beer_id"
+    t.index ["beer_id"], name: "index_venue_beers_on_beer_id"
+    t.index ["venue_id"], name: "index_venue_beers_on_venue_id"
+  end
+
+  create_table "venues", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
