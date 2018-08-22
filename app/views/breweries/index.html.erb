@@ -1,5 +1,10 @@
 <h1>Breweries</h1>
 
+<%= render partial: 'shared/search', locals: {
+  objects: "breweries",
+  object_name: "brewery_name"
+} %>
+
 <ul>
   <% @breweries.each do |b| %>
     <li>
@@ -7,5 +12,3 @@
     </li>
   <% end %>
 </ul>
-
-<%= render partial: 'shared/search', locals: {objects: "breweries", object_name: "brewery_name"} %>

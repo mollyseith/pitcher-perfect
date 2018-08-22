@@ -1,5 +1,10 @@
 <h1>Beers</h1>
-<!-- <%= params.inspect %> -->
+
+<%= render partial: 'shared/search', locals: {
+  objects: "beers",
+  object_name: "beer_name"
+} %>
+
 <ul>
   <% @beers.each do |b| %>
     <li>
@@ -9,5 +14,3 @@
     <br>
   <% end %>
 </ul>
-
-<%= render partial: 'shared/search', locals: {objects: "beers", object_name: "beer_name"} %>
