@@ -2,6 +2,7 @@ class ReviewsController < ApplicationController
   before_action :set_review, only: [:show]
 
   def index
+    @fivestarbeers = Review.five_stars
     @reviews = Review.all
   end
 

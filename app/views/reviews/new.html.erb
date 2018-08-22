@@ -4,7 +4,11 @@
 
 <%= form_for @review do |r| %>
 <%= r.label :beer %>
-<%= r.text_field :beer %>
+
+<%= r.collection_select(:beer, Beer.all, :id, :name) %>
+
+<!-- <%= render partial: 'shared/search', locals: {objects: "beers", object_name: "beer_name"} %> -->
+
 <br>
 <br>
 <%= r.label :rating %>

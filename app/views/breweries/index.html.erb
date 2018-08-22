@@ -1,7 +1,11 @@
 <h1>Breweries</h1>
 
+<%= render partial: 'shared/search', locals: {objects: "breweries", object_name: "brewery_name"} %>
+
 <ul>
   <% @breweries.each do |b| %>
-    <li><%= link_to b.name, b %></li>
+    <li>
+      <%= link_to b.name, b %><br>
+    </li>
   <% end %>
 </ul>

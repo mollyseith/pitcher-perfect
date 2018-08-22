@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 2018_08_22_141524) do
     t.datetime "birthdate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password_digest"
   end
 
 end
