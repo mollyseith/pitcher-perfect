@@ -23,7 +23,7 @@ class Beer < ApplicationRecord
   # selects all beers that have been reviewed at least once
   def self.reviewed_beers
     Beer.all.select do |beer|
-      beer.reviews.count > 0
+      beer.reviews_count > 0
     end
   end
 
