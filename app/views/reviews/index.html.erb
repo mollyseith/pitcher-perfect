@@ -1,0 +1,25 @@
+<h1>Reviews</h1>
+
+
+<h2>Five Star Beers</h2>
+<ul>
+  <% @fivestarbeers.each do |x| %>
+  <li>
+  <%= link_to x.beer.name, x.beer%><br>
+</li>
+  <%end%>
+</ul>
+
+<h2>All Beers</h2>
+
+<ul>
+  <% @reviews.each do |r| %>
+    <li>
+      Review: <%= r.content %><br>
+      Beer: <%= link_to r.beer.name, r.beer  %><br>
+      User: <%= link_to r.user.name, r.user %><br>
+      Rating <%= r.rating %>
+    </li>
+    <br>
+  <% end %>
+</ul>
