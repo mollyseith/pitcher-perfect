@@ -1,0 +1,9 @@
+<h1>Venues</h1>
+<ul>
+  <% @venues.each do |v| %>
+    <li>
+      <%= link_to v.name, v %>
+
+    </li>
+  <% end %>
+</ul>

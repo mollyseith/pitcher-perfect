@@ -5,16 +5,12 @@
   object_name: "beer_name"
 } %>
 
-<h3>Highest Rated Beer:</h3>
-
-
-
 <ul>
   <% @beers.each do |b| %>
     <li>
       <%= link_to b.name, b %><br>
       Brewery: <%= link_to b.brewery.name, b.brewery  %><br>
-      Style: <%= b.style.name %>
+      Style: <%= b.style.name %><br>
     </li>
     <br>
   <% end %>
