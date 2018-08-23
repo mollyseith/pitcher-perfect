@@ -3,9 +3,11 @@
 <%= render partial: "shared/errors", locals: {new_object: @review} %>
 
 <%= form_for @review do |r| %>
-<%= r.label :beer %>
+<%= hidden_field_tag :user_id, current_user.id %>
 
-<%= r.collection_select(:beer, Beer.all, :id, :name) %>
+<%= r.label :beer_id %>
+
+<%= r.collection_select(:beer_id, Beer.all, :id, :name) %>
 
 <!-- <%= render partial: 'shared/search', locals: {objects: "beers", object_name: "beer_name"} %> -->
 

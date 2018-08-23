@@ -28,6 +28,11 @@
 
 <br>
 
-<%= form_tag user_path(@user), method: :delete do %>
+<!-- <%= form_tag user_path(@user), method: :delete do %>
   <%= submit_tag 'Delete User' %>
+<% end %> -->
+<% if current_user.following?(@user) %>
+  <%= render 'unfollow' %>
+<% else %>
+  <%= render 'follow' %>
 <% end %>

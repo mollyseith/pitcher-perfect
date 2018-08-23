@@ -3,6 +3,14 @@ class User < ApplicationRecord
   has_many :beers, through: :reviews
   has_many :breweries, through: :beers
   has_many :styles, through: :beers
+  has_many :active_relationships, class_name: 'Relationship',
+    foreign_key: 'follower_id',
+    dependent: :destroy
+  has_many :passive_relationships, class_name: 'Relationship',
+    foreign_key: 'followed_id',
+    dependent: :destroy
+  has_many :following, through: :active_relationships, source: :followed
+  has_many :followers, through: :passive_relationships, source: :follower
 
   validates_presence_of :name, :birthdate
   validate :able_to_drink?
@@ -11,6 +19,18 @@ class User < ApplicationRecord
 
   extend ReviewInfoable::ClassMethods
   include ReviewInfoable::InstanceMethods
+
+  def follow(other_user)
+    following << other_user
+  end
+
+  def unfollow(other_user)
+    following.delete(other_user)
+  end
+
+  def following?(other_user)
+    following.include?(other_user)
+  end
 
   # Uses current day to return a user's age as an integer
   def current_age

@@ -10,16 +10,24 @@
   <%end%>
 </ul>
 
-<h2>All Beers</h2>
+<h2>Friends Reviews</h2>
 
-<ul>
-  <% @reviews.each do |r| %>
-    <li>
-      Review: <%= r.content %><br>
-      Beer: <%= link_to r.beer.name, r.beer  %><br>
-      User: <%= link_to r.user.name, r.user %><br>
-      Rating <%= r.rating %>
-    </li>
-    <br>
+<% if current_user.id %>
+  <% if @reviews.empty? %>
+    None of your friends have written reviews.
+  <% else %>
+    <ul>
+      <% @reviews.each do |r| %>
+        <li>
+          Review: <%= r.content %><br>
+          Beer: <%= link_to r.beer.name, r.beer  %><br>
+          User: <%= link_to r.user.name, r.user %><br>
+          Rating <%= r.rating %>
+        </li>
+        <br>
+      <% end %>
+    </ul>
   <% end %>
-</ul>
+<% else %>
+  Login to see reviews.
+<% end %>
