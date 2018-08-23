@@ -6,6 +6,9 @@ class Beer < ApplicationRecord
   has_many :venue_beers
   has_many :venues, through: :venue_beers
 
+  extend ReviewInfoable::ClassMethods
+  include ReviewInfoable::InstanceMethods
+
   # calculates the average rating as a float for all reviews of a specific beer
   # if beer has no reviews, returns a string stating that fact
   def average_rating
@@ -16,14 +19,10 @@ class Beer < ApplicationRecord
     end
   end
 
-  def reviews_count
-    reviews.count
-  end
-
   # selects all beers that have been reviewed at least once
   def self.reviewed_beers
-    Beer.all.select do |beer|
-      beer.reviews_count > 0
+    all.select do |b|
+      b.reviews_count > 0
     end
   end
 
@@ -31,13 +30,6 @@ class Beer < ApplicationRecord
   def self.order_by_avg_rating
     reviewed_beers.sort_by do |beer|
       beer.average_rating
-    end
-  end
-
-  # orders all beers according to their reviews_count
-  def self.order_by_review_count
-    all.sort_by do |beer|
-      beer.reviews_count
     end
   end
 
@@ -51,11 +43,5 @@ class Beer < ApplicationRecord
   # by their average_rating
   def self.worst_beer
     order_by_avg_rating[0]
-  end
-
-  # selects the beer with the highest reviews_count from the beers ordered
-  # by their reviews_count
-  def self.most_reviewed
-    order_by_review_count[-1]
   end
 end

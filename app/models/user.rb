@@ -8,6 +8,9 @@ class User < ApplicationRecord
 
   has_secure_password
 
+  extend ReviewInfoable::ClassMethods
+  include ReviewInfoable::InstanceMethods
+
   # Uses current day to return a user's age as an integer
   def current_age
     age = Date.today.year - birthdate.year
@@ -19,5 +22,9 @@ class User < ApplicationRecord
     if !(current_age >= 21)
       errors.add(:birthdate, 'must be at least 21 years old.')
     end
+  end
+
+  def unique_beers_reviewed
+    beers.uniq
   end
 end
