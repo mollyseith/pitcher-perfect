@@ -10,6 +10,7 @@ class BeersController < ApplicationController
     else
       @beers = Beer.all
     end
+    @beers = @beers.paginate(page: params[:page], per_page: 50)
   end
 
   def show

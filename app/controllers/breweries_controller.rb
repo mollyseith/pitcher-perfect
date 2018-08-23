@@ -8,6 +8,7 @@ class BreweriesController < ApplicationController
     else
       @breweries = Brewery.all
     end
+  @breweries = @breweries.paginate(page: params[:page], per_page: 50)
   end
 
   def show
