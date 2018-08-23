@@ -3,7 +3,10 @@ class ReviewsController < ApplicationController
 
   def index
     @fivestarbeers = Review.five_stars
-    @reviews = Review.all
+    @following = current_user.following.pluck(:id)
+    @reviews = Review.all.select do |r|
+      @following.include?(r.user_id)
+    end
   end
 
   def show
@@ -14,7 +17,9 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @review = Review.create(review_params)
+    @review = Review.new(review_params)
+    @review.user_id = params[:user_id]
+    @review.save
 
     if @review.errors.any?
       render :new
