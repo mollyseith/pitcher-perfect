@@ -56,12 +56,18 @@ class User < ApplicationRecord
   end
 
   def highest_rated_reviews
-    order_reviews_by_rating[0..2]
+    order_reviews_by_rating[0..2].delete_if {|r| r.rating < 3}
+  end
+
+  def highest_rated_beers
+    highest_rated_reviews.map do |r|
+      r.beer
+    end
   end
 
   def highest_rated_beer_styles
-    highest_rated_reviews.map do |r|
-      r.beer_style
+    highest_rated_beers.map do |b|
+      b.style
     end
   end
 

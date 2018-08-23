@@ -9,6 +9,10 @@ class Beer < ApplicationRecord
   extend ReviewInfoable::ClassMethods
   include ReviewInfoable::InstanceMethods
 
+  def style_name
+    style.name
+  end
+
   # calculates the average rating as a float for all reviews of a specific beer
   # if beer has no reviews, returns a string stating that fact
   def average_rating
@@ -30,18 +34,12 @@ class Beer < ApplicationRecord
   def self.order_by_avg_rating
     reviewed_beers.sort_by do |beer|
       beer.average_rating
-    end
+    end.reverse
   end
 
   # selects the beer with the highest average_rating out of the beers ordered
   # by their average_rating
-  def self.best_beer
-    order_by_avg_rating[-1]
-  end
-
-  # selects the beer with the lowest average_rating out of the beers ordered
-  # by their average_rating
-  def self.worst_beer
-    order_by_avg_rating[0]
+  def self.best_beers
+    order_by_avg_rating[0..4]
   end
 end

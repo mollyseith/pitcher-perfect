@@ -1,19 +1,41 @@
 <h1>Beers</h1>
 
-<%= render partial: 'shared/search', locals: {
-  objects: "beers",
-  object_name: "beer_name"
-} %>
+<div>
+  <h3>Most Reviewed Beer</h3>
+  <%= link_to display_most_reviewed_beer.name, display_most_reviewed_beer %>
+</div>
 
-<ul>
-  <% @beers.each do |b| %>
-    <li>
-      <%= link_to b.name, b %><br>
-      Brewery: <%= link_to b.brewery.name, b.brewery  %><br>
-      Style: <%= b.style.name %><br>
-    </li>
-    <br>
-  <% end %>
-</ul>
+<br>
+
+<div>
+  <h3>Highest Rated Beers</h3>
+  <ol>
+    <% display_best_beers.each do |b| %>
+      <li><%= link_to b.name, b %></li>
+    <% end %>
+  </ol>
+</div>
+
+<br>
+
+<div>
+  <h3>All Beers</h3>
+
+  <%= render partial: 'shared/search', locals: {
+    objects: "beers",
+    object_name: "beer_name"
+  } %>
+
+  <ul>
+    <% @beers.each do |b| %>
+      <li>
+        <%= link_to b.name, b %><br>
+        Brewery: <%= link_to b.brewery.name, b.brewery  %><br>
+        Style: <%= b.style.name %><br>
+      </li>
+      <br>
+    <% end %>
+  </ul>
+</div>
 
 <%= will_paginate @beers %>
