@@ -10,4 +10,7 @@ class Review < ApplicationRecord
     where ("rating == 5")
   end
 
+  def beer_style
+    beer.style
+  end
 end
