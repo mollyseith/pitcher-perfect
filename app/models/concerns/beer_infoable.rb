@@ -3,20 +3,20 @@ module BeerInfoable
     # sorts all instances according to the average_rating for all of an
     # instance's beers
     def order_by_avg_beer_rating
-      instances_with_reviews.sort_by do |b|
-        b.avg_beer_rating
+      instances_with_reviews.sort_by do |i|
+        i.avg_beer_rating
       end
     end
 
     def order_by_beers_count
-      all.sort_by do |s|
-        s.beers_count
+      all.sort_by do |i|
+        i.beers_count
       end
     end
 
     def instances_with_reviews
-      all.select do |b|
-        b.avg_beer_rating.class != String
+      all.select do |i|
+        i.avg_beer_rating.class != String
       end
     end
 

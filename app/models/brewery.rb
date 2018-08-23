@@ -5,5 +5,4 @@ class Brewery < ApplicationRecord
 
   extend BeerInfoable::ClassMethods
   include BeerInfoable::InstanceMethods
-
 end
