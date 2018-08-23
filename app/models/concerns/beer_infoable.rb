@@ -74,19 +74,19 @@ module BeerInfoable
     def order_beers_by_avg_rating
       reviewed_beers.sort_by do |beer|
         beer.average_rating
-      end
+      end.reverse
     end
 
     # selects the beer with the highest average_rating from the beers ordered by
     # their average rating
-    def best_beer
-      order_beers_by_avg_rating[-1]
+    def highest_rated_beers
+      order_beers_by_avg_rating[0..2]
     end
 
     # selects the beer with the lowest average_rating from the beers ordered by
     # their average rating
-    def worst_beer
-      order_beers_by_avg_rating[0]
+    def lowest_rated_beer
+      order_beers_by_avg_rating[-1]
     end
   end
 end
