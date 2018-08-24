@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_many :reviews
   has_many :beers, through: :reviews
   has_many :breweries, through: :beers
+  has_many :venues, through: :beers
   has_many :styles, through: :beers
   has_many :active_relationships, class_name: 'Relationship',
     foreign_key: 'follower_id',
