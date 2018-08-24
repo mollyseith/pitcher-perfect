@@ -4,17 +4,7 @@ require 'random-word'
 require 'pry'
 
 20.times do
-  password = RandomWord.adjs.next
-
-  User.create(name: Faker::FunnyName.name,
-    birthdate: Faker::Date.birthday(21, 100),
-    password: password,
-    password_confirmation: password
-  )
-end
-
-20.times do
-  password = RandomWord.adjs.next
+  password = 'hi'
 
   User.create(name: Faker::FunnyName.two_word_name,
     birthdate: Faker::Date.birthday(21, 100),
@@ -23,7 +13,7 @@ end
   )
 end
 
-10.times do
+30.times do
   Relationship.create(follower: User.all.sample, followed: User.all.sample)
 end
 
@@ -51,12 +41,12 @@ reviews = [
   Review.create(user: User.all.sample, beer: Beer.all.sample, content: reviews.sample, rating: 0.step(5, 0.5).to_a.sample)
 end
 
-10.times do
+20.times do
   Venue.create(name: Faker::HarryPotter.location)
 end
 
 Venue.all.each do |v|
-  15.times do
+  (5 + rand(15)).times do
     VenueBeer.create(venue: v, beer: Beer.all.sample)
   end
 end
