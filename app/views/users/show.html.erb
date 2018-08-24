@@ -5,6 +5,38 @@
 <br>
 
 <div>
+  <h3>Followers</h3>
+
+  <% if @user.followers.empty? %>
+    No followers
+  <% else %>
+    <ul>
+      <% @user.followers.each do |f| %>
+        <li><%= link_to f.name, f %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
+
+<br>
+
+<div>
+  <h3>Following</h3>
+
+  <% if @user.following.empty? %>
+    <%= link_to 'Find friends to follow', users_path %>
+  <% else %>
+    <ul>
+      <% @user.following.each do |f| %>
+        <li><%= link_to f.name, f %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
+
+<br>
+
+<div>
   <h3>Favorite Beers</h3>
   <ul>
     <% @user.highest_rated_beers.each do |b| %>
