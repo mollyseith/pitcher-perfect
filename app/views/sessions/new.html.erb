@@ -1,4 +1,8 @@
-<h1>Login</h1>
+<h1>Login or Create Account</h1>
+
+<button><%= link_to 'Create New Account', new_user_path %></button>
+
+<br><br>
 
 <%= render partial: "shared/errors", locals: {new_object: current_user} %>
 

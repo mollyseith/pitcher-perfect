@@ -1,7 +1,13 @@
 <h1><%= @brewery.name %></h1>
 
-<ul>
-  <% @brewery.beers.each do |b| %>
-    <li><%= link_to b.name, b %></li>
-  <% end %>
-</ul>
+<br>
+
+<h3></h3>
+
+<div>
+  <ul>
+    <% @brewery.beers.each do |b| %>
+      <li><%= link_to b.name, b %></li>
+    <% end %>
+  </ul>
+</div>
