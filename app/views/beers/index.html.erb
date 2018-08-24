@@ -1,5 +1,21 @@
 <h1>Beers</h1>
 
+<div>
+  <h3>Most Reviewed Beer</h3>
+  <%= link_to display_most_reviewed_beer.name, display_most_reviewed_beer %>
+</div>
+
+<br>
+
+<div>
+  <h3>Highest Rated Beers</h3>
+  <ol>
+    <% display_best_beers.each do |b| %>
+      <li><%= link_to b.name, b %></li>
+    <% end %>
+  </ol>
+</div>
+
 <%= search_form_for @search do |f|%>
   <div class= "field">
     <%= f.label :name_cont, "Name contains:" %>
