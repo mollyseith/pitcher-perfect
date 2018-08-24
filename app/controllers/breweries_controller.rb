@@ -8,7 +8,12 @@ class BreweriesController < ApplicationController
     else
       @breweries = Brewery.all
     end
-  @breweries = @breweries.paginate(page: params[:page], per_page: 50)
+
+    @breweries = @breweries.paginate(page: params[:page], per_page: 50)
+
+    @best_brewery = Brewery.highest_rated
+    @worst_brewery = Brewery.lowest_rated
+    @most_beers = Brewery.most_beers
   end
 
   def show

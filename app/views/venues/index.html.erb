@@ -1,9 +1,38 @@
 <h1>Venues</h1>
-<ul>
-  <% @venues.each do |v| %>
-    <li>
-      <%= link_to v.name, v %>
 
-    </li>
-  <% end %>
-</ul>
+<div>
+  <h3>Highest Rated</h3>
+
+  <%= link_to @best_venue.name, @best_venue %> - <%= @best_venue.avg_beer_rating %>
+</div>
+
+<br>
+
+<div>
+  <h3>Lowest Rated</h3>
+
+  <%= link_to @worst_venue.name, @worst_venue %> - <%= @worst_venue.avg_beer_rating %>
+</div>
+
+<br>
+
+<div>
+  <h3>Most Beers</h3>
+
+  <%= link_to @most_beers.name, @most_beers %> - <%= @most_beers.beers_count %>
+</div>
+
+<br>
+
+<div>
+  <h3>All Venues</h3>
+
+  <ul>
+    <% @venues.each do |v| %>
+      <li>
+        <%= link_to v.name, v %>
+
+      </li>
+    <% end %>
+  </ul>
+</div>

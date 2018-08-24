@@ -1,16 +1,44 @@
 <h1>Breweries</h1>
 
-<%= render partial: 'shared/search', locals: {
-  objects: "breweries",
-  object_name: "brewery_name"
-} %>
+<div>
+  <h3>Highest Rated</h3>
 
-<ul>
-  <% @breweries.each do |b| %>
-    <li>
-      <%= link_to b.name, b %><br>
-    </li>
-  <% end %>
-</ul>
+  <%= link_to @best_brewery.name, @best_brewery %> - <%= @best_brewery.avg_beer_rating %>
+</div>
 
-<%= will_paginate @breweries %>
+<br>
+
+<div>
+  <h3>Lowest Rated</h3>
+
+  <%= link_to @worst_brewery.name, @worst_brewery %> - <%= @worst_brewery.avg_beer_rating %>
+</div>
+
+<br>
+
+<div>
+  <h3>Most Beers</h3>
+
+  <%= link_to @most_beers.name, @most_beers %> - <%= @most_beers.beers_count %>
+</div>
+
+<br>
+
+<div>
+  <h3>All Breweries</h3>
+
+  <%= render partial: 'shared/search', locals: {
+    objects: "breweries",
+    object_name: "brewery_name"
+  } %>
+
+  <ul>
+    <% @breweries.each do |b| %>
+      <li>
+        <%= link_to b.name, b %><br>
+      </li>
+    <% end %>
+  </ul>
+
+  <%= will_paginate @breweries %>
+</div>

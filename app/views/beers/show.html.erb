@@ -1,5 +1,11 @@
 <h1><%= @beer.name %></h1>
 
-Brewery: <%= link_to @beer.brewery.name, @beer.brewery %><br>
-Style: <%= @beer.style.name %><br>
-Average Rating: <%= @avg %>
+<strong>Average Rating: </strong><%= @avg %>
+<strong>Brewery: </strong><%= link_to @beer.brewery.name, @beer.brewery %><br>
+<strong>Style: </strong><%= @beer.style.name %><br>
+<strong>Venues: </strong>
+  <ul>
+    <% @beer.venues.each do |v| %>
+      <li><%= link_to v.name, v %></li>
+    <% end %>
+  </ul>
