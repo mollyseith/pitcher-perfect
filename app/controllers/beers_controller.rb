@@ -4,12 +4,8 @@ class BeersController < ApplicationController
   def index
     # If a user has used the search bar (params[:beer_name]), then we will use
     # their search to limit the beers displayed
-    @beers = Beer.all
-    if params.include?(:object_name)
-      @beers = Beer.where('name LIKE ?', "%#{params[:object_name]}%")
-    else
-      @beers = Beer.all
-    end
+    @search = Beer.search(params[:q])
+    @beers = @search.result
     @beers = @beers.paginate(page: params[:page], per_page: 50)
   end
 

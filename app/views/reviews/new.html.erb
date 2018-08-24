@@ -3,6 +3,7 @@
 <%= render partial: "shared/errors", locals: {new_object: @review} %>
 
 <%= form_for @review do |r| %>
+
 <%= hidden_field_tag :user_id, current_user.id %>
 
 <%= r.label :beer_id %>

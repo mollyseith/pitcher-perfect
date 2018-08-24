@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.3.3'
+gem 'rails_db', '2.0.2'
 gem 'jquery-ui-rails'
 gem 'utf8-cleaner'
 gem 'faker'
@@ -9,6 +10,7 @@ gem 'random-word', '~> 2.1'
 gem 'bootstrap'
 gem 'jquery-rails'
 gem 'pry'
+gem 'ransack'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'

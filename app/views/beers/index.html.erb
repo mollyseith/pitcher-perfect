@@ -16,26 +16,44 @@
   </ol>
 </div>
 
-<br>
+<%= search_form_for @search do |f|%>
+  <div class= "field">
+    <%= f.label :name_cont, "Name contains:" %>
+    <%= f.text_field :name_cont %><br>
+    <%= f.label :brewery_name_cont, "Brewery name contains:"%>
+    <%= f.text_field :brewery_name_cont %><br>
+    <%= f.label :style_name_cont, "Style name contains:" %>
+    <%= f.text_field :style_name_cont %>
+  </div>
+  <div class= "actions"><%= f.submit "Search"%></div><br>
+<%end%>
 
-<div>
-  <h3>All Beers</h3>
-
-  <%= render partial: 'shared/search', locals: {
-    objects: "beers",
-    object_name: "beer_name"
-  } %>
-
-  <ul>
-    <% @beers.each do |b| %>
-      <li>
-        <%= link_to b.name, b %><br>
-        Brewery: <%= link_to b.brewery.name, b.brewery  %><br>
-        Style: <%= b.style.name %><br>
-      </li>
-      <br>
-    <% end %>
-  </ul>
-</div>
+<table id = "beers">
+  <style>
+  table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+  }
+  th, td {
+      padding: 8px;
+      text-align: center;
+  }
+  table#t01 {
+      width: 100%;
+      background-color: #f1f1c1;
+  }
+</style>
+  <tr>
+    <th> <%= sort_link @search, :name, "Beer Name" %></th>
+    <th> <%= sort_link @search, :brewery_id, "Brewery Name" %></th>
+    <th> <%= sort_link @search, :style_id, "Style" %></th>
+  </tr>
+  <% @beers.each do |b|%>
+    <tr>
+      <td><%= link_to b.name, b %></td>
+      <td><%= link_to b.brewery.name, b.brewery%></td>
+      <td><%= b.style.name %></td>
+    </tr>
+  <% end %>
 
 <%= will_paginate @beers %>
