@@ -1,24 +1,10 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Clone this repo ‘git clone repository_url’
+Install all necessary gems with ‘bundle install’
+Create migrations ‘rails db:migrate’
+Seed the database ‘rails db:seed’ (may take a few minutes as there is quite a bit of data)
+Start rails server ‘rails s’
+Launch browser and navigate to ‘http://localhost:3000/’
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+https://youtu.be/oZRikrZNCqw
